@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head %>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <% include partials/header %>
+    </header>
+
+    <div class="jumbotron col-md-8 col-md-offset-2">
+        <h2>Oh no! It appears someone spilled...</h2>
+        <h4>It turns out what you were looking for was: '<%= message %>'</h4>
+        <h4>If you're feeling like <a href="https://http.cat/<%= error.status %>" target="_blank">this</a>, you're not alone.</h4>
+        <h4>For the curious... here's a look under the hood:</h4>
+        <div class="well">
+            <span class="error-text"><%= error.stack %></span>
+        </div>
+    </div>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+
+    <% include partials/scripts %>
+</body>
+</html>

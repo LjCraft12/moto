@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../partials/head %>
+    </head>
+
+    <body>
+        <header>
+            <% include ../partials/header %>
+        </header>
+
+        <% posts.forEach(function(post) { %>
+            <div class="post hoverable">
+                <h4><%= post.title %></h4>
+                <p><%= post.content %></p>
+
+                <div class="post-details valign-wrapper">
+
+                    <div class="post-details-left">
+                        <!--left-->
+                        <% if (post.user.equals(currentUser.id)) { %>
+                            <div class="post-buttons">
+                                <!--comment box-->
+                                <a href="/posts/<%= post.id %>"><button class="material-icons">mode_edit</button></a>
+
+                                <form method="post" action="/posts/<%= post._id %>?_method=DELETE" class="post-inline">
+                                    <button type="submit" class="material-icons">delete</button>
+                                </form>
+                            </div>
+                        <% } else { %>
+                            <div class="post-buttons">
+                                <a href="/posts/<%= post.id %>">
+                                    <a class="tooltipped material-icons" data-position="left"
+                                       data-delay="50" data-tooltip="Comments coming soon!">comment</a>
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div class="post-details-right">
+                        <!--right-->
+                        <% var website = post.website %>
+                        <% if (website) { %>
+                            <a href="<%= website %>" target="_blank" class="material-icons">webcall_made</a><br>
+                        <% } %>
+                        <span><%= post.getUpdatedAt() %></span>
+                    </div>
+                </div>
+
+                <!--comments-->
+                <!--<div class="comments left-align"></div>-->
+            </div>
+        <% }); %>
+
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+
+        <% include ../partials/scripts %>
+    </body>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div>
+            <h3>Details</h3>
+            <p><b>Title: </b><%= post.title %></p>
+            <p><b>Content: </b><%= post.content %></p>
+            <p><b>Website: </b><%= post.website %></p>
+            <p><b>Created: </b><%= post.getCreatedAt() %></p>
+            <p><b>Last Updated: </b><%= post.getUpdatedAt() %></p>
+        </div>
+        <a href="/posts/<%= post._id %>/edit" class="btn btn-signup">Edit</a>
+        <a href="/posts" class="btn btn-login">Back</a>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/scripts %>
+</body>
+</html>
